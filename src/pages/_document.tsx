@@ -24,6 +24,11 @@ export default class MyDocument extends NextDocument {
             rel="stylesheet"
           />
 
+          <link
+            href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
+            rel="stylesheet"
+          />
+
           <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssText() }}

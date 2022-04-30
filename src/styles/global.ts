@@ -11,18 +11,15 @@ export const globalStyles = globalCss({
   body: {
     backgroundColor: `$primary`,
     color: `$text`
+  },
+
+  'body, button, input, textarea': {
+    fontFamily: `$roboto`,
+    fontSize: `$16`
+  },
+
+  'h1, h2, h3, h4, h5, h6': {
+    fontFamily: `$secular`,
+    color: `$text`
   }
-
-  // 'body, button, input, textarea,': {
-  //   fontFamily: `$default`
-  // },
-
-  // body: {
-  //   background: `$background`,
-  //   color: `$text`
-  // },
-
-  // 'h1, h2, h3, h4, h5, h6': {
-  //   color: `$title`
-  // }
 })
