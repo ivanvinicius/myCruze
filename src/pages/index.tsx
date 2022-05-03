@@ -7,7 +7,7 @@ import {
   SearchForm,
   ResponseMessage,
   Info,
-  // Cruze,
+  Cruze,
   Footer
 } from '../styles/pages/home.styles'
 
@@ -27,7 +27,7 @@ export default function Home() {
 
         <Content>
           <p>
-            Veja qual é o <strong>significado</strong> dos{` `}
+            <strong>Veja</strong> qual é o <strong>significado</strong> dos{` `}
             <strong>códigos</strong> de <strong>erro</strong> nos{` `}
             <strong>panéis</strong> dos <strong>Chevrolet.</strong>
           </p>
@@ -57,10 +57,10 @@ export default function Home() {
             </p>
           </Info>
 
-          {/* <Cruze>
-          <span>Chevrolet</span>
-          <img src="/images/car.png" alt="white sport car" />
-        </Cruze> */}
+          <Cruze>
+            <span>Chevrolet</span>
+            <img src="/images/car.png" alt="white sport car" />
+          </Cruze>
         </Content>
 
         <Footer>

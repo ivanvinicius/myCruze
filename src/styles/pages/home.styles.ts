@@ -11,7 +11,7 @@ export const Container = styled(`div`, {
   padding: `$32 $16 0`,
 
   width: `100vw`,
-  maxWidth: pixelToRem(1280),
+  maxWidth: pixelToRem(1302),
   height: `100vh`
 })
 
@@ -69,7 +69,7 @@ export const SearchForm = styled(`form`, {
     height: pixelToRem(41),
     padding: `0 $8 0 $48`,
 
-    border: `1px solid $gray100`,
+    border: `1px solid $gray150`,
     borderRight: `0`,
     borderRadius: `$default 0 0 $default`,
 
@@ -94,7 +94,7 @@ export const SearchForm = styled(`form`, {
     padding: `$8 $16`,
 
     cursor: `pointer`,
-    border: `1px solid $gray100`,
+    border: `1px solid $gray150`,
     borderLeft: `0`,
     borderRadius: `0 $default $default 0`,
 
@@ -120,7 +120,7 @@ export const ResponseMessage = styled(`section`, {
   width: `100%`,
   maxWidth: pixelToRem(450),
 
-  border: `1px solid $gray100`,
+  border: `1px solid $gray150`,
   borderRadius: `$default`,
 
   backgroundColor: `$gray400`,
@@ -149,7 +149,7 @@ export const Footer = styled(`footer`, {
   padding: `$16 0`,
 
   width: `100%`,
-  maxWidth: pixelToRem(1280),
+  maxWidth: pixelToRem(1302),
 
   display: `flex`,
   flexDirection: `row`,
@@ -170,5 +170,24 @@ export const Footer = styled(`footer`, {
 })
 
 export const Cruze = styled(`div`, {
-  position: `absolute`
+  position: `absolute`,
+  right: `0`,
+
+  width: `100%`,
+  maxWidth: pixelToRem(718),
+
+  display: `flex`,
+  flexDirection: `column`,
+  alignItems: `center`,
+
+  img: {},
+
+  span: {
+    textTransform: `uppercase`,
+
+    fontFamily: `$poppins`,
+    fontSize: `$96`,
+    color: `$gray900`,
+    opacity: `15%`
+  }
 })

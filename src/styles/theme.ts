@@ -14,15 +14,15 @@ export const { styled, globalCss, getCssText } = createStitches({
       96: `6rem`
     },
     colors: {
-      gray50: `#EDF3F6`,
+      gray50: `#FAFAFA`,
       gray100: `#B4B8BD`,
-      gray200: `#C4C4C4`,
       gray150: `#747474`,
-      gray400: `#444D5B`,
-      gray500: `#323A46`,
-      gray900: `#131313`,
+      gray200: `#C4C4C4`,
+      gray400: `#373737`,
+      gray500: `#3E3E3E`,
+      gray900: `#CF9C3E`,
 
-      button: `#242424`
+      button: `#CF9C3E`
     },
     radii: {
       default: `0.50rem`,
