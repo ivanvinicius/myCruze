@@ -1,66 +1,76 @@
 import Head from 'next/head'
-import { FormEvent, useState } from 'react'
 
-import { errorCodes } from '../data/errorCodes'
 import {
   Container,
   Header,
-  Img,
-  Title,
-  Form,
-  Input,
-  Button,
-  Response
+  Content,
+  SearchForm,
+  ResponseMessage,
+  Info,
+  // Cruze,
+  Footer
 } from '../styles/pages/home.styles'
 
 export default function Home() {
-  const [errorMessage, setErrorMessage] = useState(``)
-  const [inputValue, setInputValue] = useState(``)
-
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault()
-
-    if (inputValue.trim().length === 0) {
-      alert(`Nenhum valor informado.`)
-      return
-    }
-
-    const findError = errorCodes.find(({ error }) => error.code === inputValue)
-
-    setErrorMessage(
-      findError ? findError.error.message : `Nenhuma mensagem encontrada.`
-    )
-  }
-
   return (
     <>
       <Head>
-        <title>myOnix</title>
+        <title>myCruze</title>
       </Head>
 
       <Container>
         <Header>
-          <Img src="/images/logo.svg" alt="chevrolet logo" />
+          <img src="/images/logo.svg" alt="chevrolet logo" />
 
-          <Title>myOnix</Title>
+          <h1>myCruze</h1>
         </Header>
 
-        <Form onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            placeholder="Informe o código"
-            value={inputValue}
-            onChange={event => setInputValue(event.target.value)}
-          />
+        <Content>
+          <p>
+            Veja qual é o <strong>significado</strong> dos{` `}
+            <strong>códigos</strong> de <strong>erro</strong> nos{` `}
+            <strong>panéis</strong> dos <strong>Chevrolet.</strong>
+          </p>
 
-          <Button type="submit">Pesquisar</Button>
-        </Form>
+          <SearchForm>
+            <input
+              type="text"
+              placeholder="Código do erro"
+              inputMode="numeric"
+            />
 
-        {errorMessage.length > 0 && (
-          <Response>
-            <p>{errorMessage}</p>
-          </Response>
-        )}
+            <button type="submit">Pesquisar</button>
+          </SearchForm>
+
+          <ResponseMessage>
+            <p>
+              A Chevrolet escutou você e preparou um financiamento com as
+              melhores vantagens.
+            </p>
+          </ResponseMessage>
+
+          <Info>
+            <p>
+              Confira a relação de códigos que podem aparecer no painel dos
+              Chevrolet. Algumas mensagens podem não estar disponíveis para
+              determinados modelos de veículos.
+            </p>
+          </Info>
+
+          {/* <Cruze>
+          <span>Chevrolet</span>
+          <img src="/images/car.png" alt="white sport car" />
+        </Cruze> */}
+        </Content>
+
+        <Footer>
+          <p>&copy; 2022 ONLY FOR STUDENT PURPOSE - Ivan Vinicius Boneti</p>
+
+          <div>
+            <img src="/images/logo.svg" alt="Chevrolet logo" />
+            <strong>myCruze</strong>
+          </div>
+        </Footer>
       </Container>
     </>
   )

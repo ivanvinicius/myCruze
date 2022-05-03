@@ -1,6 +1,6 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 
-import { getCssText } from '../styles'
+import { getCssText } from '../styles/theme'
 
 export default class MyDocument extends NextDocument {
   render() {
@@ -21,11 +21,6 @@ export default class MyDocument extends NextDocument {
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;1,600&display=swap"
-            rel="stylesheet"
-          />
-
-          <link
-            href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
             rel="stylesheet"
           />
 

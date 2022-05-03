@@ -1,4 +1,4 @@
-import { globalCss } from './'
+import { globalCss } from './theme'
 
 export const globalStyles = globalCss({
   '*': {
@@ -9,17 +9,16 @@ export const globalStyles = globalCss({
   },
 
   body: {
-    backgroundColor: `$primary`,
-    color: `$text`
+    backgroundColor: `$gray500`
   },
 
   'body, button, input, textarea': {
     fontFamily: `$roboto`,
-    fontSize: `$16`
+    fontSize: `$16`,
+    color: `$gray50`
   },
 
   'h1, h2, h3, h4, h5, h6': {
-    fontFamily: `$secular`,
-    color: `$text`
+    fontFamily: `$poppins`
   }
 })

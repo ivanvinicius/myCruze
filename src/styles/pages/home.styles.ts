@@ -1,69 +1,174 @@
-import { styled } from '..'
+import { styled } from '../theme'
+import { pixelToRem } from '../../utils/pixelToRem'
 
 export const Container = styled(`div`, {
-  width: `100vw`,
-  height: `100vh`,
+  position: `relative`,
 
   display: `flex`,
-  alignItems: `center`,
-  justifyContent: `center`,
-
-  flexDirection: `column`
-})
-
-export const Header = styled(`div`, {
-  display: `flex`,
-  flexDirection: `row`
-})
-
-export const Img = styled(`img`, {
-  width: `6.25rem`,
-  height: `3.125rem`
-})
-
-export const Title = styled(`h1`, {
-  marginLeft: `$20`
-})
-
-export const Form = styled(`form`, {
-  display: `flex`,
-  alignItems: `center`,
-  justifyContent: `center`,
   flexDirection: `column`,
 
-  marginTop: `$16`
+  margin: `0 auto`,
+  padding: `$32 $16 0`,
+
+  width: `100vw`,
+  maxWidth: pixelToRem(1280),
+  height: `100vh`
 })
 
-export const Input = styled(`input`, {
-  width: `20rem`,
-  padding: `$8  $16`,
+export const Header = styled(`header`, {
+  display: `flex`,
+  alignItems: `center`,
 
-  borderRadius: `$default`
+  gap: `$8`,
+
+  img: {
+    width: `50px`,
+    height: `16px`
+  },
+
+  h1: {
+    fontSize: `$22`
+  }
 })
 
-export const Button = styled(`button`, {
-  marginTop: `$16`,
-  padding: `0.50rem 3rem`,
+export const Content = styled(`main`, {
+  /**
+   * https://dev.to/domysee/keeping-the-footer-at-the-bottom-with-css-flexbox-5h5f
+   * (Remember to use 100vh of page)
+   * Element grow the available space
+   */
+  flexGrow: 1,
 
-  border: `none`,
-  borderRadius: `$full`,
+  marginTop: `$120`,
+  width: `100%`,
+  maxWidth: pixelToRem(550),
 
-  backgroundColor: `$button`,
-  color: `$text`
+  display: `flex`,
+  flexDirection: `column`,
+
+  '>p': {
+    fontSize: `$26`,
+    fontFamily: `$poppins`,
+    textAlign: `center`,
+
+    strong: {
+      color: `$gray900`
+    }
+  }
 })
 
-export const Response = styled(`section`, {
-  width: `20rem`,
-  marginTop: `$16`,
-  padding: `$16`,
+export const SearchForm = styled(`form`, {
+  marginTop: `$48`,
 
   display: `flex`,
   alignItems: `center`,
 
+  input: {
+    width: `100%`,
+    maxWidth: pixelToRem(350),
+    height: pixelToRem(41),
+    padding: `0 $8 0 $48`,
+
+    border: `1px solid $gray100`,
+    borderRight: `0`,
+    borderRadius: `$default 0 0 $default`,
+
+    backgroundColor: `$gray400`,
+    background: `$gray400 url(images/search.svg) no-repeat scroll 15px 10px`,
+
+    outline: `unset`,
+
+    '&:focus': {
+      border: `1px solid $gray50`,
+      borderRight: `0`
+    },
+
+    '&::placeholder': {
+      color: `$gray100`
+    }
+  },
+
+  button: {
+    maxWidth: pixelToRem(100),
+    height: pixelToRem(41),
+    padding: `$8 $16`,
+
+    cursor: `pointer`,
+    border: `1px solid $gray100`,
+    borderLeft: `0`,
+    borderRadius: `0 $default $default 0`,
+
+    fontSize: `$14`,
+    fontFamily: `$poppins`,
+    fontWeight: `600`,
+
+    backgroundColor: `$button`,
+
+    transition: `all 0.2s`,
+
+    '&:hover': {
+      backgroundColor: `$gray900`,
+      border: `1px solid $gray50`,
+      borderLeft: `0`
+    }
+  }
+})
+
+export const ResponseMessage = styled(`section`, {
+  marginTop: `$48`,
+  padding: `$32`,
+  width: `100%`,
+  maxWidth: pixelToRem(450),
+
+  border: `1px solid $gray100`,
   borderRadius: `$default`,
 
-  backgroundColor: `$box`,
+  backgroundColor: `$gray400`,
 
-  color: `$primary`,
-  textAlign: `justify`
+  p: {
+    textAlign: `justify`
+  }
+})
+
+export const Info = styled(`section`, {
+  marginTop: `$48`,
+  width: `100%`,
+  maxWidth: pixelToRem(450),
+
+  p: {
+    color: `$gray100`,
+    textAlign: `justify`,
+    fontSize: `$14`
+  }
+})
+
+export const Footer = styled(`footer`, {
+  flexShrink: 0,
+
+  marginTop: `$82`,
+  padding: `$16 0`,
+
+  width: `100%`,
+  maxWidth: pixelToRem(1280),
+
+  display: `flex`,
+  flexDirection: `row`,
+  alignItems: `center`,
+  justifyContent: `space-between`,
+
+  div: {
+    display: `flex`,
+    alignItems: `center`,
+
+    gap: `$8`,
+
+    strong: {
+      fontFamily: `$poppins`,
+      fontSize: `$16`
+    }
+  }
+})
+
+export const Cruze = styled(`div`, {
+  position: `absolute`
 })
