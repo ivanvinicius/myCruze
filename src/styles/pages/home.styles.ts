@@ -7,12 +7,15 @@ export const Container = styled(`div`, {
   display: `flex`,
   flexDirection: `column`,
 
-  margin: `0 auto`,
-  padding: `$32 $16 0`,
+  padding: `$32 $32 0`,
 
   width: `100vw`,
-  maxWidth: pixelToRem(1302),
-  height: `100vh`
+  maxWidth: pixelToRem(1336),
+  minHeight: `100vh`,
+
+  backgroundColor: `$gray500`,
+
+  clipPath: `polygon(0 0, 95% 0, 80% 100%, 0 100%);`
 })
 
 export const Header = styled(`header`, {
@@ -32,15 +35,11 @@ export const Header = styled(`header`, {
 })
 
 export const Content = styled(`main`, {
-  /**
-   * https://dev.to/domysee/keeping-the-footer-at-the-bottom-with-css-flexbox-5h5f
-   * (Remember to use 100vh of page)
-   * Element grow the available space
-   */
   flexGrow: 1,
 
   marginTop: `$120`,
   width: `100%`,
+
   maxWidth: pixelToRem(550),
 
   display: `flex`,
@@ -85,6 +84,13 @@ export const SearchForm = styled(`form`, {
 
     '&::placeholder': {
       color: `$gray100`
+    },
+
+    MozAppearance: `textfield`,
+
+    '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+      WebkitAppearance: `none`,
+      margin: 0
     }
   },
 
@@ -145,16 +151,18 @@ export const Info = styled(`section`, {
 export const Footer = styled(`footer`, {
   flexShrink: 0,
 
-  marginTop: `$82`,
   padding: `$16 0`,
+  marginTop: `$48`,
 
   width: `100%`,
-  maxWidth: pixelToRem(1302),
+  maxWidth: pixelToRem(550),
 
   display: `flex`,
   flexDirection: `row`,
   alignItems: `center`,
   justifyContent: `space-between`,
+
+  backgroundColor: `$gray500`,
 
   div: {
     display: `flex`,
@@ -169,9 +177,10 @@ export const Footer = styled(`footer`, {
   }
 })
 
-export const Cruze = styled(`div`, {
+export const Car = styled(`aside`, {
   position: `absolute`,
-  right: `0`,
+  top: `40vh`,
+  right: `$32`,
 
   width: `100%`,
   maxWidth: pixelToRem(718),
@@ -180,9 +189,17 @@ export const Cruze = styled(`div`, {
   flexDirection: `column`,
   alignItems: `center`,
 
-  img: {},
+  img: {
+    zIndex: 2
+  },
 
   span: {
+    position: `absolute`,
+    top: `-12%`,
+    right: 0,
+
+    zIndex: 1,
+
     textTransform: `uppercase`,
 
     fontFamily: `$poppins`,

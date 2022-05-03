@@ -1,5 +1,7 @@
 import Head from 'next/head'
+import { FormEvent, useState } from 'react'
 
+import { errorCodes } from '../data/errorCodes'
 import {
   Container,
   Header,
@@ -7,11 +9,29 @@ import {
   SearchForm,
   ResponseMessage,
   Info,
-  Cruze,
+  Car,
   Footer
 } from '../styles/pages/home.styles'
 
 export default function Home() {
+  const [message, setMessage] = useState(``)
+  const [inputValue, setInputValue] = useState(``)
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+
+    if (inputValue.trim().length === 0) {
+      setMessage(`Nenhum código informado.`)
+      return
+    }
+
+    const findError = errorCodes.find(({ error }) => error.code === inputValue)
+
+    setMessage(
+      findError ? findError.error.message : `Nenhuma mensagem encontrada.`
+    )
+  }
+
   return (
     <>
       <Head>
@@ -27,27 +47,29 @@ export default function Home() {
 
         <Content>
           <p>
-            <strong>Veja</strong> qual é o <strong>significado</strong> dos{` `}
+            <strong>Veja</strong> qual é o <strong>significado</strong> dos
+            {` `}
             <strong>códigos</strong> de <strong>erro</strong> nos{` `}
             <strong>panéis</strong> dos <strong>Chevrolet.</strong>
           </p>
 
-          <SearchForm>
+          <SearchForm onSubmit={handleSubmit}>
             <input
-              type="text"
+              type="number"
               placeholder="Código do erro"
               inputMode="numeric"
+              value={inputValue}
+              onChange={(event) => setInputValue(event.target.value)}
             />
 
             <button type="submit">Pesquisar</button>
           </SearchForm>
 
-          <ResponseMessage>
-            <p>
-              A Chevrolet escutou você e preparou um financiamento com as
-              melhores vantagens.
-            </p>
-          </ResponseMessage>
+          {message.length > 0 && (
+            <ResponseMessage>
+              <p>{message}</p>
+            </ResponseMessage>
+          )}
 
           <Info>
             <p>
@@ -56,15 +78,9 @@ export default function Home() {
               determinados modelos de veículos.
             </p>
           </Info>
-
-          <Cruze>
-            <span>Chevrolet</span>
-            <img src="/images/car.png" alt="white sport car" />
-          </Cruze>
         </Content>
-
         <Footer>
-          <p>&copy; 2022 ONLY FOR STUDENT PURPOSE - Ivan Vinicius Boneti</p>
+          <p>&copy; 2022 ONLY FOR STUDENT PURPOSE</p>
 
           <div>
             <img src="/images/logo.svg" alt="Chevrolet logo" />
@@ -72,6 +88,11 @@ export default function Home() {
           </div>
         </Footer>
       </Container>
+
+      <Car>
+        <span>Chevrolet</span>
+        <img src="/images/car.png" alt="white sport car" />
+      </Car>
     </>
   )
 }
