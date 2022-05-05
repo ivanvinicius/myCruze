@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { FormEvent, useState } from 'react'
 
 import { useMatchMedia } from '../hooks/useMatchMedia'
@@ -19,6 +18,13 @@ export default function Home() {
   const [inputValue, setInputValue] = useState(``)
   const isTabletMedia = useMatchMedia({ type: `max`, width: 768 })
 
+  function handleBlur(event: FormEvent) {
+    console.log(`called`)
+    if (inputValue.trim().length > 0 && isTabletMedia) {
+      return handleSubmit(event)
+    }
+  }
+
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
 
@@ -30,16 +36,14 @@ export default function Home() {
     const findError = errorCodes.find(({ error }) => error.code === inputValue)
 
     setMessage(
-      findError ? findError.error.message : `Nenhuma mensagem encontrada.`
+      findError
+        ? findError.error.message
+        : `Oops! Nada foi encontrado para o código informado: ${inputValue}`
     )
   }
 
   return (
     <>
-      <Head>
-        <title>myCruze</title>
-      </Head>
-
       <Container>
         <Header>
           <img src="/images/logo.svg" alt="chevrolet logo" />
@@ -57,9 +61,15 @@ export default function Home() {
 
           <SearchForm onSubmit={handleSubmit}>
             <input
+              required
               type="number"
-              placeholder="Código do erro"
               inputMode="numeric"
+              onBlur={(event) => handleBlur(event)}
+              // maxLength={3}
+              // enterKeyHint="search"
+              // pattern="[0-9]*"
+              // title="Somente números."
+              placeholder="Código do erro"
               value={inputValue}
               onChange={(event) => setInputValue(event.target.value)}
             />

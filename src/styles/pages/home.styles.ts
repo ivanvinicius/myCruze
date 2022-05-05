@@ -116,8 +116,7 @@ export const SearchForm = styled(`form`, {
     outline: `unset`,
 
     '&:focus': {
-      border: `1px solid $gray50`,
-      borderRight: `0`
+      border: `1px solid $gray50`
     },
 
     '&::placeholder': {
@@ -165,13 +164,15 @@ export const SearchForm = styled(`form`, {
 
     '@tablet': {
       backgroundColor: `$gray400`,
+      border: `1px solid $gray150`,
 
       display: `flex`,
       alignItems: `center`,
       justifyContent: `center`,
 
       '&:hover': {
-        backgroundColor: `$gray400`
+        backgroundColor: `$gray400`,
+        border: `1px solid $gray50`
       }
     }
   }
