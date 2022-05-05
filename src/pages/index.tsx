@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { FormEvent, useState } from 'react'
 
+import { useMatchMedia } from '../hooks/useMatchMedia'
 import { errorCodes } from '../data/errorCodes'
 import {
   Container,
@@ -16,6 +17,7 @@ import {
 export default function Home() {
   const [message, setMessage] = useState(``)
   const [inputValue, setInputValue] = useState(``)
+  const isTabletMedia = useMatchMedia({ type: `max`, width: 768 })
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
@@ -62,7 +64,16 @@ export default function Home() {
               onChange={(event) => setInputValue(event.target.value)}
             />
 
-            <button type="submit">Pesquisar</button>
+            {isTabletMedia ? (
+              <button type="button" onClick={() => setInputValue(``)}>
+                <img
+                  src="/images/close.svg"
+                  alt="button to clear input value"
+                />
+              </button>
+            ) : (
+              <button type="submit"> Pesquisar </button>
+            )}
           </SearchForm>
 
           {message.length > 0 && (
@@ -81,11 +92,6 @@ export default function Home() {
         </Content>
         <Footer>
           <p>&copy; 2022 ONLY FOR STUDENT PURPOSE</p>
-
-          <div>
-            <img src="/images/logo.svg" alt="Chevrolet logo" />
-            <strong>myCruze</strong>
-          </div>
         </Footer>
       </Container>
 

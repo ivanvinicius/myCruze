@@ -16,7 +16,11 @@ export const globalStyles = globalCss({
   'body, button, input, textarea': {
     fontFamily: `$roboto`,
     fontSize: `$16`,
-    color: `$gray50`
+    color: `$gray50`,
+
+    '@mobileL': {
+      fontSize: `$14`
+    }
   },
 
   'h1, h2, h3, h4, h5, h6': {

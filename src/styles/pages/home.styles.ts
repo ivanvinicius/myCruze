@@ -1,9 +1,31 @@
+import { keyframes } from '@stitches/react'
+
 import { styled } from '../theme'
 import { pixelToRem } from '../../utils/pixelToRem'
 
-export const Container = styled(`div`, {
-  position: `relative`,
+const slideFromRightSide = keyframes({
+  '0%': {
+    opacity: `50%`,
+    transform: `translateX(100%)`
+  },
+  '100%': {
+    opacity: `100%`,
+    transform: `translateX(0%)`
+  }
+})
 
+const slideFromTop = keyframes({
+  '0%': {
+    opacity: `0%`,
+    transform: `translateY(100%)`
+  },
+  '100%': {
+    opacity: `70%`,
+    transform: `translateY(0%)`
+  }
+})
+
+export const Container = styled(`div`, {
   display: `flex`,
   flexDirection: `column`,
 
@@ -13,9 +35,14 @@ export const Container = styled(`div`, {
   maxWidth: pixelToRem(1336),
   minHeight: `100vh`,
 
-  backgroundColor: `$gray500`,
+  background: `linear-gradient($gray500, $gray400)`,
+  clipPath: `polygon(0 0, 100% 0, 86% 100%, 0 100%)`,
 
-  clipPath: `polygon(0 0, 95% 0, 80% 100%, 0 100%);`
+  '@mobileL': {
+    padding: `$16 $16 0`,
+
+    clipPath: `none`
+  }
 })
 
 export const Header = styled(`header`, {
@@ -31,6 +58,10 @@ export const Header = styled(`header`, {
 
   h1: {
     fontSize: `$22`
+  },
+
+  '@mobileL': {
+    alignSelf: `center`
   }
 })
 
@@ -39,7 +70,6 @@ export const Content = styled(`main`, {
 
   marginTop: `$120`,
   width: `100%`,
-
   maxWidth: pixelToRem(550),
 
   display: `flex`,
@@ -52,6 +82,14 @@ export const Content = styled(`main`, {
 
     strong: {
       color: `$gray900`
+    }
+  },
+
+  '@mobileL': {
+    marginTop: `$48`,
+
+    '>p': {
+      fontSize: `$22`
     }
   }
 })
@@ -73,7 +111,7 @@ export const SearchForm = styled(`form`, {
     borderRadius: `$default 0 0 $default`,
 
     backgroundColor: `$gray400`,
-    background: `$gray400 url(images/search.svg) no-repeat scroll 15px 10px`,
+    background: `$gray400 url(images/search.svg) no-repeat scroll 16px 10px`,
 
     outline: `unset`,
 
@@ -91,6 +129,13 @@ export const SearchForm = styled(`form`, {
     '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
       WebkitAppearance: `none`,
       margin: 0
+    },
+
+    '@tablet': {
+      padding: `0 $8 0 $40`,
+      maxWidth: pixelToRem(350),
+
+      background: `$gray400 url(images/search-mobile.svg) no-repeat scroll 16px 12px`
     }
   },
 
@@ -116,6 +161,18 @@ export const SearchForm = styled(`form`, {
       backgroundColor: `$gray900`,
       border: `1px solid $gray50`,
       borderLeft: `0`
+    },
+
+    '@tablet': {
+      backgroundColor: `$gray400`,
+
+      display: `flex`,
+      alignItems: `center`,
+      justifyContent: `center`,
+
+      '&:hover': {
+        backgroundColor: `$gray400`
+      }
     }
   }
 })
@@ -133,6 +190,10 @@ export const ResponseMessage = styled(`section`, {
 
   p: {
     textAlign: `justify`
+  },
+
+  '@mobileL': {
+    padding: `$16`
   }
 })
 
@@ -159,27 +220,15 @@ export const Footer = styled(`footer`, {
 
   display: `flex`,
   flexDirection: `row`,
-  alignItems: `center`,
-  justifyContent: `space-between`,
 
-  backgroundColor: `$gray500`,
-
-  div: {
-    display: `flex`,
-    alignItems: `center`,
-
-    gap: `$8`,
-
-    strong: {
-      fontFamily: `$poppins`,
-      fontSize: `$16`
-    }
+  '@mobileL': {
+    padding: `$8 0`
   }
 })
 
 export const Car = styled(`aside`, {
   position: `absolute`,
-  top: `40vh`,
+  top: `30vh`,
   right: `$32`,
 
   width: `100%`,
@@ -190,21 +239,32 @@ export const Car = styled(`aside`, {
   alignItems: `center`,
 
   img: {
-    zIndex: 2
+    zIndex: 2,
+
+    animation: `${slideFromRightSide} 1.5s ease-in-out`
   },
 
   span: {
-    position: `absolute`,
-    top: `-12%`,
-    right: 0,
-
     zIndex: 1,
 
-    textTransform: `uppercase`,
+    position: `absolute`,
+    top: `-$48`,
+    right: `$64`,
 
     fontFamily: `$poppins`,
     fontSize: `$96`,
-    color: `$gray900`,
-    opacity: `15%`
+    textTransform: `uppercase`,
+    color: `transparent`,
+
+    background: `linear-gradient(90deg, $gray900, $orange200)`,
+    backgroundClip: `text`,
+    WebkitBackgroundClip: `text`,
+    opacity: `70%`,
+
+    animation: `${slideFromTop} 0.6s ease-in-out`
+  },
+
+  '@laptop': {
+    display: `none`
   }
 })

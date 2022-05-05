@@ -14,6 +14,8 @@ export const { styled, globalCss, getCssText } = createStitches({
       96: `6rem`
     },
     colors: {
+      orange200: `#FF5C00`,
+
       gray50: `#FAFAFA`,
       gray100: `#B4B8BD`,
       gray150: `#747474`,
@@ -34,6 +36,7 @@ export const { styled, globalCss, getCssText } = createStitches({
       16: `1rem`,
       20: `1.25rem`,
       32: `2rem`,
+      40: `2.5rem`,
       48: `3rem`,
       64: `4rem`,
       82: `5.12rem`,
@@ -42,7 +45,9 @@ export const { styled, globalCss, getCssText } = createStitches({
   },
 
   media: {
-    bp1: `(min-width: 480px)`
+    mobileL: `(max-width: 425px)`,
+    tablet: `(max-width: 768px)`,
+    laptop: `(max-width: 1220px)`
   },
 
   utils: {
